@@ -1,0 +1,77 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tekstar-bookstore-internal-ingress
+  namespace: development
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:845940460216:certificate/fc66c22a-0736-4e90-8c58-d096f64363dc
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=360
+    external-dns.alpha.kubernetes.io/hostname: >-
+      renting-api.dev.banifami.com, resource-api.dev.banifami.com,
+      inventory-api.dev.banifami.com, clients-api.dev.banifami.com,
+      bookstore.dev.banifami.com, api.dev.banifami.com
+spec:
+  ingressClassName: alb
+  rules:
+    - host: renting-api.dev.banifami.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: renting-api-service
+                port:
+                  number: 80
+    - host: resource-api.dev.banifami.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: resource-api-service
+                port:
+                  number: 80
+    - host: inventory-api.dev.banifami.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: inventory-api-service
+                port:
+                  number: 80
+    - host: clients-api.dev.banifami.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: clients-api-service
+                port:
+                  number: 80
+    - host: bookstore.dev.banifami.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front-end-service
+                port:
+                  number: 80
+    - host: api.dev.banifami.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: front-end-service-proxy
+                port:
+                  number: 80
