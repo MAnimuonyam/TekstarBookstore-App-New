@@ -5,7 +5,7 @@ metadata:
   namespace: development
   annotations:
     alb.ingress.kubernetes.io/scheme: internal
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:845940460216:certificate/fc66c22a-0736-4e90-8c58-d096f64363dc
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:arn:aws:acm:us-east-2:************:certificate/fc6xxxxxxxxxxxxxxxxxxxx
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=360
     external-dns.alpha.kubernetes.io/hostname: >-
