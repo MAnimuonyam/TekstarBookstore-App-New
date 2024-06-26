@@ -4,7 +4,7 @@ metadata:
   name: nginx
   annotations:
     external-dns.alpha.kubernetes.io/hostname: dev.banifami.com
-    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:845940460216:certificate/fc66c22a-0736-4e90-8c58-d096f64363dc
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:************:certificate/fc6xxxxxxxxxxxxxxxxxxxx
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 spec:
